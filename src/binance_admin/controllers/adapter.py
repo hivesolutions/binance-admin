@@ -41,8 +41,18 @@ import appier
 
 class AdapterController(appier.Controller):
 
+    def convert(self, value, origin, target = "BTC"):
+        value = float(value)
+        is_same = origin == target
+        symbol = "%s%s" % (origin, target)
+        price = 1.0 if is_same else self.quotes[symbol]
+        result = value * price
+        result_s = "%f" % result
+        return result_s
+
     @property
     @appier.cached
-    def quotes(self, *args, **kwargs):
+    def quotes(self):
         api = self.get_api()
-        return api.all_ticker()
+        ticket = api.all_ticker()
+        return dict(((value["symbol"], float(value["price"])) for value in ticket))

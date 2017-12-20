@@ -24,8 +24,8 @@
         <thead>
             <tr>
                 <th class="left label" width="20%">Symbol</th>
-                <th class="right label" width="20%">Value</th>
-                <th class="right label" width="20%">BTC</th>
+                <th class="left label" width="20%">Value</th>
+                <th class="left label" width="20%">BTC</th>
                 <th class="right label" width="20%">USD</th>
                 <th class="right label" width="20%">Percent</th>
             </tr>
@@ -42,8 +42,8 @@
                                 <a href="{{ url_for('trade.list', symbol = balance.asset + '_BTC') }}">{{ balance.asset }}</a>
                             </strong>
                         </td>
-                        <td class="right">{{ balance.free }}</td>
-                        <td class="right">{{ value_btc }}</td>
+                        <td class="left">{{ balance.free }}</td>
+                        <td class="left">{{ value_btc }}</td>
                         <td class="right">{{ value_usd }}</td>
                         <td class="right">{{ value_percent }} %</td>
                     </tr>

@@ -41,7 +41,7 @@ import appier
 
 class AdapterController(appier.Controller):
 
-    def convert(self, value, origin, target = "BTC", places = None):
+    def convert(self, value, origin, target = "BTC", places = 8):
         value = float(value)
         rate = self.conversion_r(origin, target)
         result = value * rate

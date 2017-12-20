@@ -69,14 +69,3 @@ class BaseController(adapter.AdapterController):
             link = "wallet",
             account = account
         )
-
-    @appier.route("/trades", "GET")
-    @appier.ensure(token = "admin")
-    def trades(self):
-        api = self.get_api()
-        trades = api.list_trades()
-        return self.template(
-            "trades.html.tpl",
-            link = "trades",
-            trades = trades
-        )

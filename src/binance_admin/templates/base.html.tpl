@@ -17,10 +17,4 @@
     {% else %}
         <a href="{{ url_for('base.wallet') }}">wallet</a>
     {% endif %}
-    //
-    {% if link == "trades" %}
-        <a href="{{ url_for('base.trades') }}" class="active">trades</a>
-    {% else %}
-        <a href="{{ url_for('base.trades') }}">trades</a>
-    {% endif %}
 {% endblock %}

@@ -41,12 +41,13 @@ import appier
 
 class AdapterController(appier.Controller):
 
-    def convert(self, value, origin, target = "BTC"):
+    def convert(self, value, origin, target = "BTC", places = None):
         value = float(value)
         rate = self.conversion_r(origin, target)
         result = value * rate
-        result_s = "%f" % result
-        return result_s
+        if not places == None: template = "%%.%df" % places
+        else: template = "%f"
+        return template % result
 
     def conversion_r(self, origin, target):
         if origin == target: return 1.0
@@ -85,4 +86,6 @@ class AdapterController(appier.Controller):
             value_eth = self.convert(value, asset, target = "ETH")
             balance_m["BTC"] += float(value_btc)
             balance_m["ETH"] += float(value_eth)
+        value_usd = self.convert(balance_m["BTC"], "BTC", target = "USDT", places = 2)
+        balance_m["USD"] += float(value_usd)
         return balance_m

@@ -1,1 +1,20 @@
 @charset "utf-8";
+
+.table.table.table-resume {
+    margin: 32px 0px 32px 0px;
+}
+
+.table.table.table-resume td {
+    line-height: 28px;
+    width: 50%;
+}
+
+.table.table-resume .value {
+    font-size: 24px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.table.table-resume.three td {
+    width: 33.33%;
+}

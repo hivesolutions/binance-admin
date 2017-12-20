@@ -2,6 +2,21 @@
 {% block title %}Trades{% endblock %}
 {% block name %}Trades :: {{ symbol }}{% endblock %}
 {% block content %}
+    <table class="table table-resume">
+        <tbody>
+            <tr>
+                <td>
+                    <span class="label">Origin</span><br />
+                    <span class="value">{{ origin }}</span>
+                </td>
+                <td>
+                    <span class="label">Target</span><br />
+                    <span class="value">{{ target }}</span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
     <table class="table table-list">
         <thead>
             <tr>

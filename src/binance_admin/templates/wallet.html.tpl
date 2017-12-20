@@ -8,7 +8,7 @@
     <ul class="account">
     	{% for balance in account.balances %}
     		{% if balance.free|float > 0.0 %}
-    			<p>{{ balance.asset }} -> {{ balance.free }}</p>
+    			<p>{{ balance.asset }} - {{ balance.free }}</p>
     		{% endif %}
     	{% endfor %}
     </ul>

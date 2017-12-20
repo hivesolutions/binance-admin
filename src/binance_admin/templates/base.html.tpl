@@ -11,4 +11,10 @@
     {% else %}
         <a href="{{ url_for('base.ticker') }}">ticker</a>
     {% endif %}
+    //
+    {% if link == "wallet" %}
+        <a href="{{ url_for('base.wallet') }}" class="active">wallet</a>
+    {% else %}
+        <a href="{{ url_for('base.wallet') }}">wallet</a>
+    {% endif %}
 {% endblock %}

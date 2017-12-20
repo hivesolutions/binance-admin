@@ -39,7 +39,9 @@ __license__ = "Apache License, Version 2.0"
 
 import appier
 
-class BaseController(appier.Controller):
+from . import adapter
+
+class BaseController(adapter.AdapterController):
 
     @appier.route("/", "GET")
     def index(self):
@@ -49,6 +51,21 @@ class BaseController(appier.Controller):
 
     @appier.route("/ticker", "GET")
     def ticker(self):
+        api = self.get_api()
+        ticker = api.all_ticker()
         return self.template(
-            "ticker.html.tpl"
+            "ticker.html.tpl",
+            link = "ticker",
+            ticker = ticker
+        )
+
+    @appier.route("/wallet", "GET")
+    @appier.ensure(token = "admin")
+    def wallet(self):
+        api = self.get_api()
+        account = api.self_account()
+        return self.template(
+            "wallet.html.tpl",
+            link = "wallet",
+            account = account
         )

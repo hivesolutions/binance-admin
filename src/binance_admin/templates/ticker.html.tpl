@@ -3,14 +3,13 @@
 {% block name %}Repos{% endblock %}
 {% block content %}
     <div class="quote">
-        We're showing both your private and public GitHub repositories below.<br/>
-        Enable your projects below by flicking the switch.
+        Here you can check the current prices of the pairs.
     </div>
-    <ul class="repos">
+    <ul class="ticker">
         {% for item in ticker %}
             <li>
-                <a href="{{ repo.html_url }}">{{ repo.full_name }}</a>
-
+            	<span class="symbol">{{ item.symbol }}</span>
+            	<span class="symbol">{{ item.price }}</span>
             </li>
         {% endfor %}
     </ul>

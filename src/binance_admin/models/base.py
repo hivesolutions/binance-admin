@@ -41,7 +41,7 @@ import appier_extras
 
 from . import adapter
 
-class BinanceAdminBase(
+class BinanceBase(
     appier_extras.admin.Base,
     adapter.Adapter
 ):

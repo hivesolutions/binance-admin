@@ -17,16 +17,17 @@
                 {% set trade_total = (trade.qty|float * trade.price|float) + (trade.commission|float * trade.price|float) %}
                 {% set current_price = own.convert(1.0, origin, target = target) %}
                 {% set profit = current_price|float - trade.price|float %}
-                {% set profit_percent = "%.02f" % (profit / trade.price|float * 100.0) %}
+                {% set profit_percent = profit / trade.price|float * 100.0 %}
+                {% set profit_percent_s = "%.02f" % profit_percent %}
                 <tr>
                     <td class="left"><strong>{{ date_time((trade.time / 1000)|int) }}</strong></td>
                     <td class="left">{{ trade.price }}</td>
                     <td class="right">{{ trade.commission }}</td>
                     <td class="right">{{ "%.08f" % trade_total }}</td>
                     {% if profit_percent > 0.0 %}
-                        <td class="right green">{{ profit_percent }} %</td>
+                        <td class="right green">{{ profit_percent_s }} %</td>
                     {% else %}
-                        <td class="right red">{{ profit_percent }} %</td>
+                        <td class="right red">{{ profit_percent_s }} %</td>
                     {% endif %}
                 </tr>
             {% endfor %}

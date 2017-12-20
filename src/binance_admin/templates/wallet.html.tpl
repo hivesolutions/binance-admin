@@ -37,7 +37,11 @@
                     {% set value_usd = own.convert(value_btc, "BTC", target = "USDT", places = 2) %}
                     {% set value_percent = "%.02f" % (value_btc|float / own.balance.BTC|float * 100.0) %}
                     <tr>
-                        <td class="left"><strong>{{ balance.asset }}</strong></td>
+                        <td class="left">
+                            <strong>
+                                <a href="{{ url_for('trade.list', symbol = balance.asset + 'BTC') }}">{{ balance.asset }}</a>
+                            </strong>
+                        </td>
                         <td class="right">{{ balance.free }}</td>
                         <td class="right">{{ value_btc }}</td>
                         <td class="right">{{ value_usd }}</td>

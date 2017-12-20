@@ -48,10 +48,15 @@ class TradeController(adapter.AdapterController):
     def list(self, symbol):
         api = self.get_api()
         trades = api.list_trades(symbol = symbol)
+        origin = symbol[:3]
+        target = symbol[3:]
         return self.template(
             "trade/list.html.tpl",
             link = "trades",
-            trades = trades
+            trades = trades,
+            symbol = symbol,
+            origin = origin,
+            target = target
         )
 
     @appier.route("/trades/<str:symbol>/<str:id>", "GET")

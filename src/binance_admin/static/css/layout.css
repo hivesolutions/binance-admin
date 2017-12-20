@@ -18,3 +18,15 @@
 .table.table-resume.three td {
     width: 33.33%;
 }
+
+.green {
+    color: #39b549;
+}
+
+.red {
+    color: #ec1c23;
+}
+
+.yellow {
+    color: #fdc13c;
+}

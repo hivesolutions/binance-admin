@@ -56,7 +56,7 @@ class AdapterController(appier.Controller):
         symbol_r = "%s%s" % (target, origin)
         return 1.0 / self.quotes[symbol_r]
 
-    def round_s(self, value, places):
+    def round_s(self, value, places = 8):
         if places == None: return "%f" % value
         value = commons.Decimal(value)
         value = round(value, places)

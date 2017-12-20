@@ -1,0 +1,6 @@
+*.pyc
+*.debug
+
+session.shelve*
+
+/src/binance_admin/repos

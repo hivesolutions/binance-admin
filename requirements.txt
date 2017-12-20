@@ -2,4 +2,5 @@ appier
 appier_extras
 jinja2
 pymongo
+commons_py
 binance_api

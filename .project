@@ -6,6 +6,7 @@
 		<project>appier</project>
 		<project>appier_extras</project>
 		<project>binance_api</project>
+		<project>commons_py</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

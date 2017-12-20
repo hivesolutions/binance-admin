@@ -1,6 +1,6 @@
 {% extends "base.html.tpl" %}
-{% block title %}Repos{% endblock %}
-{% block name %}Repos{% endblock %}
+{% block title %}Ticker{% endblock %}
+{% block name %}Ticker{% endblock %}
 {% block content %}
     <div class="quote">
         Here you can check the current prices of the pairs.

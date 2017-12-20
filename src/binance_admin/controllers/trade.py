@@ -47,9 +47,8 @@ class TradeController(adapter.AdapterController):
     @appier.ensure(token = "admin")
     def list(self, symbol):
         api = self.get_api()
-        trades = api.list_trades(symbol = symbol)
-        origin = symbol[:3]
-        target = symbol[3:]
+        origin, target = symbol.split("_", 1)
+        trades = api.list_trades(symbol = origin + target)
         return self.template(
             "trade/list.html.tpl",
             link = "trades",

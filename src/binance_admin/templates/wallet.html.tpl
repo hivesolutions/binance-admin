@@ -39,7 +39,7 @@
                     <tr>
                         <td class="left">
                             <strong>
-                                <a href="{{ url_for('trade.list', symbol = balance.asset + 'BTC') }}">{{ balance.asset }}</a>
+                                <a href="{{ url_for('trade.list', symbol = balance.asset + '_BTC') }}">{{ balance.asset }}</a>
                             </strong>
                         </td>
                         <td class="right">{{ balance.free }}</td>

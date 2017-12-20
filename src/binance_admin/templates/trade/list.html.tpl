@@ -7,11 +7,15 @@
             <tr>
                 <td>
                     <span class="label">Origin</span><br />
-                    <span class="value">{{ origin }}</span>
+                    <span class="value">
+                    	<a href="https://www.binance.com/trade.html?symbol={{ symbol }}" target="_blank">{{ origin }}</a>
+                    </span>
                 </td>
                 <td>
                     <span class="label">Target</span><br />
-                    <span class="value">{{ target }}</span>
+                    <span class="value">
+                    	<a href="https://www.binance.com/trade.html?symbol={{ symbol }}" target="_blank">{{ target }}</a>
+                    </span>
                 </td>
             </tr>
         </tbody>

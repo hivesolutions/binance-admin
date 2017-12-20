@@ -39,12 +39,16 @@ __license__ = "Apache License, Version 2.0"
 
 import appier
 
-import binance_admin
-
 class BaseController(appier.Controller):
 
     @appier.route("/", "GET")
-    def index(self, repo):
+    def index(self):
         return self.redirect(
-            self.url_for("base.render", repo = repo)
+            self.url_for("base.ticker")
+        )
+
+    @appier.route("/ticker", "GET")
+    def ticker(self):
+        return self.template(
+            "ticker.html.tpl"
         )

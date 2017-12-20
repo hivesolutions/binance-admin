@@ -5,7 +5,7 @@
     <div class="quote">
         Here you can check your wallet.
     </div>
-    <table class="table table-resume">
+    <table class="table table-resume three">
         <tbody>
             <tr>
                 <td>

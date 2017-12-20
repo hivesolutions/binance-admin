@@ -19,7 +19,7 @@
                 {% set current_price = own.convert(1.0, origin, target = target) %}
                 {% set profit = current_price|float - trade.price|float %}
                 {% set profit_percent = profit / trade.price|float * 100.0 %}
-                {% set profit_percent_s = own.round_s(profit_percent, 2) %}
+                {% set profit_percent_s = own.round_s(profit_percent, places = 2) %}
                 <tr>
                     <td class="left"><strong>{{ date_time((trade.time / 1000)|int) }}</strong></td>
                     {% if type_s == "Buy" %}

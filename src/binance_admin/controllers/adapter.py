@@ -47,7 +47,7 @@ class AdapterController(appier.Controller):
         value = float(value)
         rate = self.conversion_r(origin, target)
         result = value * rate
-        return self.round_s(result, places)
+        return self.round_s(result, places = places)
 
     def conversion_r(self, origin, target):
         if origin == target: return 1.0

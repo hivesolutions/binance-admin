@@ -35,7 +35,7 @@
                 {% if balance.free|float > 0.0 %}
                     {% set value_btc = own.convert(balance.free, balance.asset) %}
                     {% set value_usd = own.convert(value_btc, "BTC", target = "USDT", places = 2) %}
-                    {% set value_percent = own.round_s(value_btc|float / own.balance.BTC|float * 100.0, 2) %}
+                    {% set value_percent = own.round_s(value_btc|float / own.balance.BTC|float * 100.0, places = 2) %}
                     <tr>
                         <td class="left">
                             <strong>

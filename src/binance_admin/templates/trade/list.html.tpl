@@ -7,8 +7,8 @@
             <tr>
                 <th class="left label" width="20%">Date</th>
                 <th class="left label" width="14%">Type</th>
-                <th class="left label" width="24%">Price</th>
-                <th class="left label" width="24%">Total</th>
+                <th class="left label" width="24%">Unit Price</th>
+                <th class="left label" width="24%">Amount</th>
                 <th class="right label" width="18%">P/L</th>
             </tr>
         </thead>

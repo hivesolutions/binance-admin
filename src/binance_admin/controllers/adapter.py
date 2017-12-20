@@ -40,4 +40,9 @@ __license__ = "Apache License, Version 2.0"
 import appier
 
 class AdapterController(appier.Controller):
-    pass
+
+    @property
+    @appier.cached
+    def quotes(self, *args, **kwargs):
+        api = self.get_api()
+        return api.all_ticker()

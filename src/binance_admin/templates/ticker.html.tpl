@@ -8,8 +8,8 @@
     <ul class="ticker">
         {% for item in ticker %}
             <li>
-            	<span class="symbol">{{ item.symbol }}</span>
-            	<span class="symbol">{{ item.price }}</span>
+                <span class="symbol">{{ item.symbol }}</span>
+                <span class="symbol">{{ item.price }}</span>
             </li>
         {% endfor %}
     </ul>

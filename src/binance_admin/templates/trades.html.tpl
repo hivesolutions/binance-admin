@@ -1,25 +1,8 @@
 {% extends "base.html.tpl" %}
-{% block title %}Wallet{% endblock %}
-{% block name %}Wallet{% endblock %}
+{% block title %}Trades{% endblock %}
+{% block name %}Trades{% endblock %}
 {% block content %}
-    <table class="table table-resume three">
-        <tbody>
-            <tr>
-                <td>
-                    <span class="label">Total BTC</span><br />
-                    <span class="value">{{ own.balance.BTC }}</span>
-                </td>
-                <td>
-                    <span class="label">Total ETH</span><br />
-                    <span class="value">{{ own.balance.ETH }}</span>
-                </td>
-                <td>
-                    <span class="label">Total USD</span><br />
-                    <span class="value">{{ own.balance.USD }}</span>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+	{{ trades }}
     <table class="table table-list">
         <thead>
             <tr>

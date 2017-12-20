@@ -45,8 +45,8 @@ class AdapterController(appier.Controller):
         value = float(value)
         rate = self.conversion_r(origin, target)
         result = value * rate
-        if not places == None: template = "%%.0%df" % places
-        else: template = "%f"
+        if places == None: template = "%f"
+        else: template = "%%.0%df" % places
         return template % result
 
     def conversion_r(self, origin, target):

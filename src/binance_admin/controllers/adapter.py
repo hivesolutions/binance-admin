@@ -43,12 +43,17 @@ class AdapterController(appier.Controller):
 
     def convert(self, value, origin, target = "BTC"):
         value = float(value)
-        is_same = origin == target
-        symbol = "%s%s" % (origin, target)
-        price = 1.0 if is_same else self.quotes[symbol]
-        result = value * price
+        rate = self.conversion_r(origin, target)
+        result = value * rate
         result_s = "%f" % result
         return result_s
+
+    def conversion_r(self, origin, target):
+        if origin == target: return 1.0
+        symbol = "%s%s" % (origin, target)
+        if symbol in self.quotes: return self.quotes[symbol]
+        symbol_r = "%s%s" % (target, origin)
+        return 1.0 / self.quotes[symbol_r]
 
     @property
     @appier.cached
@@ -56,3 +61,28 @@ class AdapterController(appier.Controller):
         api = self.get_api()
         ticket = api.all_ticker()
         return dict(((value["symbol"], float(value["price"])) for value in ticket))
+
+    @property
+    @appier.cached
+    def account(self):
+        api = self.get_api()
+        return api.self_account()
+
+    @property
+    @appier.cached
+    def balance(self):
+        balance_m = dict(
+            ETH = 0.0,
+            BTC = 0.0,
+            USD = 0.0,
+            EUR = 0.0
+        )
+        for balance in self.account["balances"]:
+            asset = balance["asset"]
+            value = float(balance["free"])
+            if value <= 0.0: continue
+            value_btc = self.convert(value, asset, target = "BTC")
+            value_eth = self.convert(value, asset, target = "ETH")
+            balance_m["BTC"] += float(value_btc)
+            balance_m["ETH"] += float(value_eth)
+        return balance_m

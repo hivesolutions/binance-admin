@@ -47,7 +47,7 @@ class BinanceAdminApp(appier.WebApp):
     def __init__(self, *args, **kwargs):
         appier.WebApp.__init__(
             self,
-            name = "binance_admin",
+            name = "binance",
             parts = (
                 appier_extras.AdminPart,
             ),

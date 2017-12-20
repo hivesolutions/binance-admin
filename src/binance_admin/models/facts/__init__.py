@@ -34,10 +34,6 @@ __copyright__ = "Copyright (c) 2008-2017 Hive Solutions Lda."
 __license__ = "Apache License, Version 2.0"
 """ The license for the module """
 
-from . import facts
-from . import adapter
-from . import base
+from . import fact
 
-from .facts import *
-from .adapter import Adapter
-from .base import BinanceBase
+from .fact import Fact

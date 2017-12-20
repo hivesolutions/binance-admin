@@ -41,18 +41,33 @@ import appier
 
 from . import adapter
 
-class TradeController(adapter.AdapterController):
+class OrderController(adapter.AdapterController):
 
-    @appier.route("/trades/<str:symbol>", "GET")
+    @appier.route("/orders/<str:symbol>", "GET")
     @appier.ensure(token = "admin")
     def list(self, symbol):
         api = self.get_api()
         origin, target = symbol.split("_", 1)
-        trades = api.list_trades(symbol = origin + target)
+        orders = api.list_trades(symbol = origin + target)
         return self.template(
-            "trade/list.html.tpl",
-            link = "trades",
-            trades = trades,
+            "order/list.html.tpl",
+            link = "orders",
+            orders = orders,
+            symbol = symbol,
+            origin = origin,
+            target = target
+        )
+
+    @appier.route("/orders/<str:symbol>/<str:id>", "GET")
+    @appier.ensure(token = "admin")
+    def show(self, symbol, id):
+        api = self.get_api()
+        origin, target = symbol.split("_", 1)
+        orders = api.list_trades(symbol = origin + target)
+        return self.template(
+            "order/list.html.tpl",
+            link = "orders",
+            orders = orders,
             symbol = symbol,
             origin = origin,
             target = target

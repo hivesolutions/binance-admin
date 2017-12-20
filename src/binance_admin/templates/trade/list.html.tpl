@@ -1,6 +1,6 @@
 {% extends "base.html.tpl" %}
 {% block title %}Trades{% endblock %}
-{% block name %}Trades :: {{ symbol }}{% endblock %}
+{% block name %}<a href="{{ url_for('base.wallet') }}">Trades</a> / {{ origin }}-{{ target }}{% endblock %}
 {% block content %}
     <table class="table table-resume">
         <tbody>

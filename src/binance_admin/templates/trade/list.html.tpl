@@ -14,21 +14,21 @@
         </thead>
         <tbody>
             {% for trade in trades %}
-            	{% set type_s = "Buy" if trade.isBuyer else "Sell" %}
+                {% set type_s = "Buy" if trade.isBuyer else "Sell" %}
                 {% set trade_total = (trade.qty|float * trade.price|float) + (trade.commission|float * trade.price|float) %}
                 {% set current_price = own.convert(1.0, origin, target = target) %}
                 {% set profit = current_price|float - trade.price|float %}
                 {% set profit_percent = profit / trade.price|float * 100.0 %}
-                {% set profit_percent_s = "%.02f" % profit_percent %}
+                {% set profit_percent_s = own.round_s(profit_percent, 2) %}
                 <tr>
                     <td class="left"><strong>{{ date_time((trade.time / 1000)|int) }}</strong></td>
                     {% if type_s == "Buy" %}
-                    	<td class="left green">{{ type_s }}</td>
+                        <td class="left green">{{ type_s }}</td>
                     {% else %}
-                    	<td class="left red">{{ type_s }}</td>
-                	{% endif %}
+                        <td class="left red">{{ type_s }}</td>
+                    {% endif %}
                     <td class="left">{{ trade.price }} {{ target }}</td>
-                    <td class="left">{{ "%.08f" % trade_total }} {{ target }}</td>
+                    <td class="left">{{ own.round_s(trade_total) }} {{ target }}</td>
                     {% if profit_percent > 0.0 %}
                         <td class="right green">{{ profit_percent_s }} %</td>
                     {% else %}

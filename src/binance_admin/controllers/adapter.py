@@ -37,6 +37,8 @@ __copyright__ = "Copyright (c) 2008-2017 Hive Solutions Lda."
 __license__ = "Apache License, Version 2.0"
 """ The license for the module """
 
+import commons
+
 import appier
 
 class AdapterController(appier.Controller):
@@ -45,9 +47,7 @@ class AdapterController(appier.Controller):
         value = float(value)
         rate = self.conversion_r(origin, target)
         result = value * rate
-        if places == None: template = "%f"
-        else: template = "%%.0%df" % places
-        return template % result
+        return self.round_s(result, places)
 
     def conversion_r(self, origin, target):
         if origin == target: return 1.0
@@ -55,6 +55,13 @@ class AdapterController(appier.Controller):
         if symbol in self.quotes: return self.quotes[symbol]
         symbol_r = "%s%s" % (target, origin)
         return 1.0 / self.quotes[symbol_r]
+
+    def round_s(self, value, places):
+        if places == None: return "%f" % value
+        value = commons.Decimal(value)
+        value = round(value, places)
+        template = "%%.0%df" % places
+        return template % value
 
     @property
     @appier.cached

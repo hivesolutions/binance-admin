@@ -8,19 +8,18 @@
                 <td>
                     <span class="label">Origin</span><br />
                     <span class="value">
-                        <a href="https://www.cryptocompare.com/coins/{{ origin }}/overview/USD" target="_blank">{{ origin }}</a>
+                        <a href="https://www.cryptocompare.com/coins/{{ origin|lower }}/overview/usd" target="_blank">{{ origin }}</a>
                     </span>
                 </td>
                 <td>
                     <span class="label">Target</span><br />
                     <span class="value">
-                        <a href="https://www.cryptocompare.com/coins/{{ target }}/overview/USD" target="_blank">{{ target }}</a>
+                        <a href="https://www.cryptocompare.com/coins/{{ target|lower }}/overview/usd" target="_blank">{{ target }}</a>
                     </span>
                 </td>
             </tr>
         </tbody>
     </table>
-
     <table class="table table-list">
         <thead>
             <tr>

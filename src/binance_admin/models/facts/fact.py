@@ -37,6 +37,8 @@ __copyright__ = "Copyright (c) 2008-2017 Hive Solutions Lda."
 __license__ = "Apache License, Version 2.0"
 """ The license for the module """
 
+import datetime
+
 import appier
 
 from .. import base
@@ -75,14 +77,32 @@ class Fact(base.BinanceBase):
     )
 
     @classmethod
+    def list_names(cls):
+        return [
+            "id",
+            "year",
+            "month",
+            "hour",
+            "minute"
+        ]
+
+    @classmethod
     def is_abstract(cls):
         return True
 
     @classmethod
     def from_remote(cls):
-        raise appier.NotImplementedError()
+        instance = cls()
+        date = datetime.datetime.utcnow()
+        instance.year = date.year
+        instance.month = date.month
+        instance.day = date.day
+        instance.hour = date.hour
+        instance.minute = date.minute
+        return instance
 
     @classmethod
+    @appier.operation(name = "Generate Snapshot")
     def snapshot_s(cls):
         instance = cls.from_remote()
         instance.save()

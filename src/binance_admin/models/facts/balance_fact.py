@@ -44,24 +44,39 @@ from . import fact
 class BalanceFact(fact.Fact):
 
     btc = appier.field(
-        type = float
+        type = float,
+        description = "BTC"
     )
 
     eth = appier.field(
-        type = float
+        type = float,
+        description = "ETH"
     )
 
     usd = appier.field(
-        type = float
+        type = float,
+        description = "USD"
     )
 
     eur = appier.field(
-        type = float
+        type = float,
+        description = "EUR"
     )
+
+    @classmethod
+    def list_names(cls):
+        return super(BalanceFact, cls).list_names() + [
+            "btc",
+            "eth",
+            "usd"
+        ]
 
     @classmethod
     def from_remote(cls):
         instance = super(BalanceFact, cls).from_remote()
-        instance.btc = self.balance
-        #@todo implement this getting the api
-        raise appier.NotImplementedError()
+        balance = cls.get_balance_g()
+        instance.btc = balance["BTC"]
+        instance.eth = balance["ETH"]
+        instance.usd = balance["USD"]
+        instance.eur = balance["EUR"]
+        return instance

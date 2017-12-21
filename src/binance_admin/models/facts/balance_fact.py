@@ -61,4 +61,7 @@ class BalanceFact(fact.Fact):
 
     @classmethod
     def from_remote(cls):
+        instance = super(BalanceFact, cls).from_remote()
+        instance.btc = self.balance
+        #@todo implement this getting the api
         raise appier.NotImplementedError()

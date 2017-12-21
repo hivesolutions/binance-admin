@@ -37,8 +37,6 @@ __copyright__ = "Copyright (c) 2008-2017 Hive Solutions Lda."
 __license__ = "Apache License, Version 2.0"
 """ The license for the module """
 
-import binance
-
 import appier
 import appier_extras
 
@@ -53,13 +51,6 @@ class BinanceAdminApp(appier.WebApp):
             ),
             *args, **kwargs
         )
-
-    def get_api(self):
-        api = self._get_api()
-        return api
-
-    def _get_api(self):
-        return binance.API()
 
 if __name__ == "__main__":
     app = BinanceAdminApp()

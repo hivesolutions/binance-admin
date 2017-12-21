@@ -41,7 +41,9 @@ import commons
 
 import appier
 
-class AdapterController(appier.Controller):
+from binance_admin import partials
+
+class AdapterController(appier.Controller, partials.Business):
 
     def convert(self, value, origin, target = "BTC", places = 8):
         value = float(value)

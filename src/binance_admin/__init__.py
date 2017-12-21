@@ -36,8 +36,10 @@ __license__ = "Apache License, Version 2.0"
 
 from . import controllers
 from . import models
+from . import partials
 from . import main
 
 from .controllers import *
 from .models import *
+from .partials import *
 from .main import BinanceAdminApp

@@ -77,3 +77,12 @@ class Fact(base.BinanceBase):
     @classmethod
     def is_abstract(cls):
         return True
+
+    @classmethod
+    def from_remote(cls):
+        raise appier.NotImplementedError()
+
+    @classmethod
+    def snapshot_s(cls):
+        instance = cls.from_remote()
+        instance.save()

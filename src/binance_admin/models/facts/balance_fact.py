@@ -58,3 +58,7 @@ class BalanceFact(fact.Fact):
     eur = appier.field(
         type = float
     )
+
+    @classmethod
+    def from_remote(cls):
+        raise appier.NotImplementedError()

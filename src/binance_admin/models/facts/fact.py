@@ -37,9 +37,32 @@ __copyright__ = "Copyright (c) 2008-2017 Hive Solutions Lda."
 __license__ = "Apache License, Version 2.0"
 """ The license for the module """
 
+import appier
+
 from .. import base
 
 class Fact(base.BinanceBase):
+    """
+    The base fact model from which all the facts should inherit
+    to be able to be represented in the data warehouse as facts.
+
+    Should expose some of the dimension in a denormalized form.
+    """
+
+    year = appier.field(
+        type = int,
+        index = True
+    )
+
+    month = appier.field(
+        type = int,
+        index = True
+    )
+
+    day = appier.field(
+        type = int,
+        index = True
+    )
 
     @classmethod
     def is_abstract(cls):

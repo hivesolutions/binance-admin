@@ -64,6 +64,16 @@ class Fact(base.BinanceBase):
         index = True
     )
 
+    hour = appier.field(
+        type = int,
+        index = True
+    )
+
+    minute = appier.field(
+        type = int,
+        index = True
+    )
+
     @classmethod
     def is_abstract(cls):
         return True

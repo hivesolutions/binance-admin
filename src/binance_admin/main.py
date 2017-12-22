@@ -40,6 +40,8 @@ __license__ = "Apache License, Version 2.0"
 import appier
 import appier_extras
 
+from binance_admin import models
+
 class BinanceAdminApp(appier.WebApp):
 
     def __init__(self, *args, **kwargs):
@@ -51,6 +53,13 @@ class BinanceAdminApp(appier.WebApp):
             ),
             *args, **kwargs
         )
+
+    def start(self):
+        appier.WebApp.start(self)
+        appier.hourly_work(self._snapshot)
+
+    def _snapshot(self):
+        models.BalanceFact.snapshot_s()
 
 if __name__ == "__main__":
     app = BinanceAdminApp()

@@ -109,6 +109,24 @@ class Business(object):
         return balance_m
 
     @classmethod
+    @appier.cached
+    def get_balances_g(cls):
+        balances_m = dict()
+        for balance in cls.get_account_g()["balances"]:
+            asset = balance["asset"]
+            value = float(balance["free"])
+            if value <= 0.0: continue
+            balance_m = dict()
+            value_btc = cls.convert_g(value, asset, target = "BTC")
+            value_eth = cls.convert_g(value, asset, target = "ETH")
+            balance_m["base"] = value
+            balance_m["BTC"] = float(value_btc)
+            balance_m["ETH"] = float(value_eth)
+            balance_m["USD"] = float(cls.convert_g(value_btc, "BTC", target = "USDT"))
+            balances_m[asset] = balance_m
+        return balances_m
+
+    @classmethod
     def _get_api(cls):
         return binance.API()
 
@@ -137,3 +155,7 @@ class Business(object):
     @property
     def balance(self):
         return self.__class__.get_balance_g()
+
+    @property
+    def balances(self):
+        return self.__class__.get_balances_g()

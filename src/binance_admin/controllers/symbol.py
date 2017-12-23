@@ -19,6 +19,9 @@
 # You should have received a copy of the Apache License along with
 # Hive Binance Admin. If not, see <http://www.apache.org/licenses/>.
 
+__author__ = "João Magalhães <joamag@hive.pt>"
+""" The author(s) of the module """
+
 __version__ = "1.0.0"
 """ The version of the module """
 
@@ -34,12 +37,17 @@ __copyright__ = "Copyright (c) 2008-2017 Hive Solutions Lda."
 __license__ = "Apache License, Version 2.0"
 """ The license for the module """
 
-from . import adapter
-from . import base
-from . import symbol
-from . import trade
+import appier
 
-from .adapter import AdapterController
-from .base import BaseController
-from .symbol import SymbolController
-from .trade import TradeController
+from . import adapter
+
+class SymbolController(adapter.AdapterController):
+
+    @appier.route("/symbols/<str:symbol>", "GET")
+    @appier.ensure(token = "admin")
+    def show(self, symbol):
+        return self.template(
+            "symbol/show.html.tpl",
+            link = "trades",
+            symbol = symbol
+        )

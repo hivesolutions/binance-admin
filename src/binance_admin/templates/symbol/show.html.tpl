@@ -14,13 +14,13 @@
                 <td>
                     <span class="label">BTC</span><br />
                     <span class="value">
-                        <a href="https://www.cryptocompare.com/coins/{{ target|lower }}/overview/usd" target="_blank">{{ own.round_s(own.balances[symbol].BTC) }}</a>
+                        <a href="https://www.cryptocompare.com/coins/{{ symbol|lower }}/overview/btc" target="_blank">{{ own.round_s(own.balances[symbol].BTC) }}</a>
                     </span>
                 </td>
                 <td>
                     <span class="label">USD</span><br />
                     <span class="value">
-                        <a href="https://www.cryptocompare.com/coins/{{ target|lower }}/overview/usd" target="_blank">{{ own.round_s(own.balances[symbol].USD, places = 2) }}</a>
+                        <a href="https://www.cryptocompare.com/coins/{{ symbol|lower }}/overview/usd" target="_blank">{{ own.round_s(own.balances[symbol].USD, places = 2) }}</a>
                     </span>
                 </td>
             </tr>
@@ -34,13 +34,13 @@
                     <td>
                         <span class="label">Origin</span><br />
                         <span class="value">
-                            <a href="https://www.cryptocompare.com/coins/{{ symbol|lower }}/overview/usd" target="_blank">{{ symbol }}</a>
+                            <a href="https://www.cryptocompare.com/coins/{{ symbol|lower }}/overview/{{ target|lower }}" target="_blank">{{ symbol }}</a>
                         </span>
                     </td>
                     <td>
                         <span class="label">Target</span><br />
                         <span class="value">
-                            <a href="https://www.cryptocompare.com/coins/{{ target|lower }}/overview/usd" target="_blank">{{ target }}</a>
+                            <a href="https://www.cryptocompare.com/coins/{{ target|lower }}/overview/{{ target|lower }}" target="_blank">{{ target }}</a>
                         </span>
                     </td>
                 </tr>

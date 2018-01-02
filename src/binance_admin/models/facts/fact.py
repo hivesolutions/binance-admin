@@ -82,6 +82,7 @@ class Fact(base.BinanceBase):
             "id",
             "year",
             "month",
+            "day",
             "hour",
             "minute"
         ]

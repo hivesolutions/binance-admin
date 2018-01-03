@@ -97,8 +97,10 @@ class Business(object):
             EUR = 0.0
         )
         for balance in cls.get_account_g()["balances"]:
+            value = 0.0
             asset = balance["asset"]
-            value = float(balance["free"])
+            value += float(balance["free"])
+            value += float(balance["locked"])
             if value <= 0.0: continue
             value_btc = cls.convert_g(value, asset, target = "BTC")
             value_eth = cls.convert_g(value, asset, target = "ETH")
@@ -113,8 +115,10 @@ class Business(object):
     def get_balances_g(cls):
         balances_m = dict()
         for balance in cls.get_account_g()["balances"]:
+            value = 0.0
             asset = balance["asset"]
-            value = float(balance["free"])
+            value += float(balance["free"])
+            value += float(balance["locked"])
             if value <= 0.0: continue
             balance_m = dict()
             value_btc = cls.convert_g(value, asset, target = "BTC")

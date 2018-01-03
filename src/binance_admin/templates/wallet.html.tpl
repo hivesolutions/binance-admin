@@ -31,18 +31,19 @@
             </tr>
         </thead>
         <tbody>
-            {% for balance in account.balances %}
-                {% if balance.free|float > 0.0 %}
-                    {% set value_btc = own.convert(balance.free, balance.asset) %}
-                    {% set value_usd = own.convert(value_btc, "BTC", target = "USDT", places = 2) %}
-                    {% set value_percent = own.round_s(value_btc|float / own.balance.BTC|float * 100.0, places = 2) %}
+            {% for symbol, balance in own.balances %}
+                {% if balance.base > 0.0 %}
+                    {% set value_base = own.round_s(balance.base) %}
+                    {% set value_btc = own.round_s(balance.BTC) %}
+                    {% set value_usd = own.round_s(balance.USD, places = 2) %}
+                    {% set value_percent = own.round_s(balance.percent, places = 2) %}
                     <tr>
                         <td class="left">
                             <strong>
-                                <a href="{{ url_for('symbol.show', symbol = balance.asset) }}">{{ balance.asset }}</a>
+                                <a href="{{ url_for('symbol.show', symbol = symbol) }}">{{ symbol }}</a>
                             </strong>
                         </td>
-                        <td class="left">{{ balance.free }}</td>
+                        <td class="left">{{ value_base }}</td>
                         <td class="left">{{ value_btc }}</td>
                         <td class="right">{{ value_usd }}</td>
                         <td class="right">{{ value_percent }} %</td>

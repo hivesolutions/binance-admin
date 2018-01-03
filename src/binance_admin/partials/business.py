@@ -113,7 +113,8 @@ class Business(object):
     @classmethod
     @appier.cached
     def get_balances_g(cls):
-        balances_m = dict()
+        balances_m = appier.OrderedDict()
+        global_m = cls.get_balance_g()
         for balance in cls.get_account_g()["balances"]:
             value = 0.0
             asset = balance["asset"]
@@ -123,11 +124,14 @@ class Business(object):
             balance_m = dict()
             value_btc = cls.convert_g(value, asset, target = "BTC")
             value_eth = cls.convert_g(value, asset, target = "ETH")
+            value_usd = cls.convert_g(value_btc, "BTC", target = "USDT")
             balance_m["base"] = value
             balance_m["BTC"] = float(value_btc)
             balance_m["ETH"] = float(value_eth)
-            balance_m["USD"] = float(cls.convert_g(value_btc, "BTC", target = "USDT"))
+            balance_m["USD"] = float(value_usd)
+            balance_m["percent"] = float(value_usd) / global_m["USD"] * 100.0
             balances_m[asset] = balance_m
+        balances_m.sort(key = lambda v: v[1]["USD"], reverse = True)
         return balances_m
 
     @classmethod

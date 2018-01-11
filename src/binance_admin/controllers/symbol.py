@@ -48,6 +48,6 @@ class SymbolController(adapter.AdapterController):
     def show(self, symbol):
         return self.template(
             "symbol/show.html.tpl",
-            link = "trades",
+            link = "wallet",
             symbol = symbol
         )

@@ -1,6 +1,6 @@
 appier
-appier_extras
+appier-extras
 jinja2
 pymongo
-commons_py
-binance_api
+commons-py
+binance-api

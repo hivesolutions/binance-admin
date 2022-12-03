@@ -4,9 +4,9 @@
 	<comment></comment>
 	<projects>
 		<project>appier</project>
-		<project>appier_extras</project>
-		<project>binance_api</project>
-		<project>commons_py</project>
+		<project>appier-extras</project>
+		<project>binance-api</project>
+		<project>commons-py</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
